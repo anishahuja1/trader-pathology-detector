@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Trader {
+  userId      String   @id
+  name        String
+  pathology   String
+  description String
+  trades      Trade[]
+}
+
+model Trade {
+  tradeId        String   @id
+  userId         String
+  sessionId      String
+  asset          String
+  assetClass     String
+  direction      String
+  entryPrice     Float
+  exitPrice      Float?
+  quantity       Float
+  entryAt        DateTime
+  exitAt         DateTime?
+  status         String
+  outcome        String?
+  pnl            Float?
+  planAdherence  Int
+  emotionalState String
+  entryRationale String
+  revengeFlag    Boolean
+  trader         Trader   @relation(fields: [userId], references: [userId])
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([entryAt])
+}

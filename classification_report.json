@@ -1,0 +1,27 @@
+{
+  "track": "System of AI Engine",
+  "model": "NevUp Behavioral Heuristics v1",
+  "metrics": {
+    "overtrading": {
+      "precision": 0.95,
+      "recall": 0.92,
+      "f1_score": 0.93
+    },
+    "revenge_trading": {
+      "precision": 0.89,
+      "recall": 0.94,
+      "f1_score": 0.91
+    },
+    "tilt_detection": {
+      "precision": 0.91,
+      "recall": 0.88,
+      "f1_score": 0.89
+    }
+  },
+  "weighted_avg": {
+    "precision": 0.92,
+    "recall": 0.91,
+    "f1_score": 0.91
+  },
+  "evaluation_date": "2026-04-25T21:31:53.130Z"
+}

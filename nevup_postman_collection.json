@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "nevup-hackathon-2026",
+		"name": "NevUp Behavioral Intelligence API",
+		"description": "Collection for testing the NevUp Behavioral Intelligence Platform API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4010/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4010",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trader Metrics (trader_01)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0cmFkZXJfMDEiLCJyb2xlIjoidHJhZGVyIiwibmFtZSI6IkFsZXggTWVyY2VyIiwiaWF0IjoxNzc3MTUyMzc3LCJleHAiOjE4MDg2ODgzNzd9.S8d_o-BZhtkg9srmj0a-F_CRyNk2DFXVphLBad0wkt4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4010/users/trader_01/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4010",
+					"path": [
+						"users",
+						"trader_01",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cross-Tenant Access Test (Forbidden)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0cmFkZXJfMDEiLCJyb2xlIjoidHJhZGVyIiwibmFtZSI6IkFsZXggTWVyY2VyIiwiaWF0IjoxNzc3MTUyMzc3LCJleHAiOjE4MDg2ODgzNzd9.S8d_o-BZhtkg9srmj0a-F_CRyNk2DFXVphLBad0wkt4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4010/users/trader_02/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4010",
+					"path": [
+						"users",
+						"trader_02",
+						"metrics"
+					],
+					"description": "This should return 403 Forbidden because the token is for trader_01 but requesting trader_02."
+				}
+			},
+			"response": []
+		}
+	]
+}
