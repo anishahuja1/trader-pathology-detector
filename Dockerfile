@@ -31,6 +31,7 @@ COPY --from=builder /app/prisma ./prisma
 
 # Initialize database during image build
 ENV DATABASE_URL="file:/app/prisma/dev.db"
+RUN rm -f /app/prisma/dev.db
 RUN npx prisma db push --accept-data-loss
 RUN npx prisma db seed
 
